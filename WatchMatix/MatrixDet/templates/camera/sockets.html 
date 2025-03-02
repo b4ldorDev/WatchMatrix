@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ESP32-CAM Stream</title>
+</head>
+<body>
+    <h1>ESP32-CAM - Streaming</h1>
+    
+    <div class="image-container">
+        <img id="camera-stream" src="" alt="Esperando imagen...">
+        <p class="status" id="connection-status">Conectando...</p>
+    </div>
+    
+    <script>
+        const cameraImage = document.getElementById('camera-stream');
+        const statusText = document.getElementById('connection-status');
+        
+        // Conectar al WebSocket
+        const websocketProtocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+        const websocketUrl = websocketProtocol + window.location.host + '/ws/camera/stream/';
+        const socket = new WebSocket(websocketUrl);
+        
+        socket.onopen = function(e) {
+            statusText.textContent = 'Conectado al streaming';
+            statusText.style.color = 'green';
+        };
+        
+        socket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            if (data.image_url) {
+                // Añadir timestamp para evitar caché del navegador
+                cameraImage.src = data.image_url + '?t=' + new Date().getTime();
+            }
+        };
+        
+        socket.onclose = function(e) {
+            statusText.textContent = 'Conexión cerrada. Reconectando...';
+            statusText.style.color = 'red';
+            // Intentar reconectar después de 5 segundos
+            setTimeout(function() {
+                window.location.reload();
+            }, 5000);
+        };
+        
+        socket.onerror = function(e) {
+            statusText.textContent = 'Error en la conexión';
+            statusText.style.color = 'red';
+        };
+    </script>
+</body>
+</html>

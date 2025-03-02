@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}MatrixDet{% endblock %}</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts - Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      color: #040000;
+      background-color:rgb(224, 100, 131);
+    }
+
+    .layout_padding {
+      padding-top: 120px;
+      padding-bottom: 120px;
+    }
+
+    .layout_padding2 {
+      padding: 45px 0;
+    }
+
+    .layout_padding2-top {
+      padding-top: 45px;
+    }
+
+    .layout_padding2-bottom {
+      padding-bottom: 45px;
+    }
+
+    .layout_padding-top {
+      padding-top: 120px;
+    }
+
+    .layout_padding-bottom {
+      padding-bottom: 120px;
+    }
+
+    .heading_container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .heading_container h2 {
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      color: #010201;
+    }
+
+    /*header section*/
+    .hero_area {
+      height: 100vh;
+      background-image: url(../static/images/hero-bg.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    .hero_area::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, transparent, #63f74f);
+    }
+
+    .sub_page .hero_area {
+      height: auto;
+    }
+
+    .header_section {
+      background-color: #ffffff;
+      position: relative;
+      clip-path: polygon(50% 0%, 100% 0, 100% 100%, 28.5% 100%, 26.5% 86%, 0 84%, 0 0);
+    }
+
+    .header_section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 62%;
+      height: 45px;
+      background: #080203;
+      z-index: 1;
+      clip-path: polygon(50% 0%, 100% 0, 100% 100%, 8% 100%, 0 0);
+    }
+
+    .header_section .nav_container {
+      margin: 0 auto;
+    }
+
+    .menu_width {
+      width: 100%;
+    }
+
+    a,
+    a:hover,
+    a:focus {
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      color: initial;
+    }
+
+    .btn,
+    .btn:focus {
+      outline: none !important;
+      box-shadow: none;
+    }
+
+    .header_nav {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .main_nav {
+      position: relative;
+      z-index: 9;
+    }
+
+    .main_nav .top_nav ul {
+      display: flex;
+      margin: 0;
+    }
+
+    .main_nav .top_nav ul li {
+      list-style-type: none;
+    }
+
+    .main_nav .top_nav ul li a {
+      display: inline-block;
+      color: #ffffff;
+      margin: 10px 0 10px 35px;
+    }
+
+    .main_nav .top_nav ul li a img {
+      max-width: 25px;
+      max-height: 25px;
+      margin-right: 15px;
+    }
+
+    .custom_nav-container.navbar-expand-lg .navbar-nav .nav-item .nav-link {
+      padding: 10px 20px;
+      color: #212121;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .custom_nav-container .nav_search-btn {
+      background-size: 22px;
+      background-repeat: no-repeat;
+      background-position-y: 7px;
+      width: 35px;
+      height: 35px;
+      padding: 0;
+      border: none;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand img {
+      width: 125px;
+      margin-right: 5px;
+    }
+
+    .navbar-brand.brand_mobile {
+      display: none;
+    }
+
+    .custom_nav-container {
+      z-index: 99999;
+    }
+
+    .custom_nav-container .navbar-toggler {
+      outline: none;
+    }
+
+    .custom_nav-container .navbar-toggler .navbar-toggler-icon {
+      background-size: 55px;
+    }
+
+    /* Footer section */
+    .footer_section {
+      margin: 25px 0;
+    }
+
+    .footer_section .social_box {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer_section .social_box a {
+      margin-right: 15px;
+    }
+
+    .footer_section .social_box a img {
+      max-width: 25px;
+      max-height: 25px;
+    }
+
+    .footer_section p {
+      margin: 0;
+      margin-top: 25px;
+      color: #1c1b1b;
+    }
+
+    .footer_section a {
+      color: #1c1b1b;
+    }
+    
+    /* Content area */
+    .content-area {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      margin: 20px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+  
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header_section">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+        <a class="navbar-brand" href="{% url 'index' %}">
+          <span>MatrixDet</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'index' %}">Home</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Section -->
+  <div class="container layout_padding2">
+    <div class="content-area">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p>&copy; {% now "Y" %} MatrixDet - Materia TC1003B - A01773374</p>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  
+  {% block extra_js %}{% endblock %}
+</body>
+</html>
