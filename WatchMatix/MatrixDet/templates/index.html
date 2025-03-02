@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ESP32-CAM Image</title>
+    <meta http-equiv="refresh" content="5"> 
+</head>
+<body>
+    <h1>ESP32-CAM - Última imagen</h1>
+    
+    <div class="image-container">
+        {% if latest_image %}
+            <img src="{{ latest_image }}" alt="Imagen de ESP32-CAM">
+            <p class="timestamp">Última actualización: {% now "j F Y, H:i:s" %}</p>
+        {% else %}
+            <p>No hay imágenes disponibles</p>
+        {% endif %}
+    </div>
+    
+    <p>Esta página se actualiza automáticamente cada 5 segundos</p>
+</body>
+</html>
+
+{% endblock%}
