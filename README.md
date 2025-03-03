@@ -1,5 +1,5 @@
 ## Manual de Configuración del entorno de desarrollo
-## Features
+## Pasos
 -  Ubica que te encuentres en el directorio correcto en mi caso es el : 
 ```TC1003B/```
 -  Usa el siguiete comando para activar el entorno virtual: 
