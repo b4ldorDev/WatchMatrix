@@ -111,5 +111,5 @@ void loop() {
   
   esp_camera_fb_return(fb);
   
-  delay(5000);  // Ajusta según tus necesidades
+  delay(5000); 
 }
